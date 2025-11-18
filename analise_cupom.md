@@ -303,7 +303,7 @@ graph TB
       "ValorTotalMenosDesconto": 14.0,
       "PontosGerados": 4.0,
       "Duvida": false,
-      "ProdutoSpecialDog": true
+      "ProdutoSpecialDog": false
     },
     {
       "Nome": "SPECIAL DOG ULTRALIFE CORDEIRO 100GR",
