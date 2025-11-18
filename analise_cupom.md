@@ -1079,13 +1079,7 @@ O sistema de análise de cupom fiscal da campanha **Sorte de Quem Indica** repre
 
 **Resultado:** Mais de **132 mil cupons** processados com sucesso, representando quase **R$ 15 milhões** em produtos SpecialDog, com um sistema eficiente, confiável e escalável!
 
-### 🚀 Próximos Passos
 
-- 📱 App mobile para upload direto
-- 🤖 Machine Learning para detecção de fraudes
-- 📊 Dashboard em tempo real para participantes
-- 🔄 Integração com mais redes de varejo
-- 🎁 Sistema de recompensas gamificado
 
 ---
 
