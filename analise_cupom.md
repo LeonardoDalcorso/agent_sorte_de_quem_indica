@@ -16,10 +16,10 @@
 
 | Linha do Produto | Multiplicador | Exemplo (10 unidades) |
 |------------------|---------------|----------------------|
-| 🔴 **PREMIUM** (Padrão) | **1x** | 10 × 1 = **10 pontos** |
-| 🟡 **ULTRALIFE** | **2x** | 10 × 2 = **20 pontos** |
-| 🟢 **BIONATURAL** | **3x** | 10 × 3 = **30 pontos** |
-| 🔵 **BIONATURAL SENSITIVE** | **4x** | 10 × 4 = **40 pontos** |
+| 🔵 **PREMIUM** (Padrão) | **1x** | 10 × 1 = **10 pontos** |
+| 🟢 **ULTRALIFE** | **2x** | 10 × 2 = **20 pontos** |
+| 🟡 **BIONATURAL** | **3x** | 10 × 3 = **30 pontos** |
+| 🔴 **BIONATURAL SENSITIVE** | **4x** | 10 × 4 = **40 pontos** |
 
 **Fórmula:** `PONTOS = QUANTIDADE × MULTIPLICADOR`
 
@@ -286,9 +286,9 @@ graph TB
 
 ```json
 {
-  "Cnpj": "XXXXXXXX",
-  "Chave": "3525110330XXX00011765001XXXXXX1000261605",
-  "Url": "https://www.nfce.fazenda.sp.gov.br/consulta?p=...",
+  "Cnpj": "XXXXX",
+  "Chave": "XXXXXXXXX",
+  "Url": "https://www.nfce.fazenda.sp.gov.br/consulta?p=XXXXXXX",
   "DataEmissao": "2025-11-08T11:40:18",
   "ValorTotalCupom": 141.7,
   "Produtos": [
@@ -301,12 +301,38 @@ graph TB
       "DescontoTotal": 0.0,
       "ValorUnitarioMenosDesconto": 3.5,
       "ValorTotalMenosDesconto": 14.0,
-      "PontosGerados": 4.0,
+      "PontosGerados": 0.0,
       "Duvida": false,
       "ProdutoSpecialDog": false
     },
     {
-      "Nome": "SPECIAL DOG ULTRALIFE CORDEIRO 100GR",
+      "Nome": "SACHE DOG CHOW AD. CARNE 100GR",
+      "Quantidade": 8.0,
+      "ValorUnitario": 3.5,
+      "ValorTotal": 28.0,
+      "DescontoUnitario": 0.0,
+      "DescontoTotal": 0.0,
+      "ValorUnitarioMenosDesconto": 3.5,
+      "ValorTotalMenosDesconto": 28.0,
+      "PontosGerados": 0.0,
+      "Duvida": false,
+      "ProdutoSpecialDog": false
+    },
+    {
+      "Nome": "SACHE DOG CHOW FL. CARNE 100GR",
+      "Quantidade": 8.0,
+      "ValorUnitario": 3.5,
+      "ValorTotal": 28.0,
+      "DescontoUnitario": 0.0,
+      "DescontoTotal": 0.0,
+      "ValorUnitarioMenosDesconto": 3.5,
+      "ValorTotalMenosDesconto": 28.0,
+      "PontosGerados": 0.0,
+      "Duvida": false,
+      "ProdutoSpecialDog": false
+    },
+    {
+      "Nome": "SPECIAL DOG SACHE ULTRALIFE AD CORDEIRO AO MOLHO 100GR",
       "Quantidade": 4.0,
       "ValorUnitario": 3.2,
       "ValorTotal": 12.8,
@@ -317,11 +343,30 @@ graph TB
       "PontosGerados": 8.0,
       "Duvida": false,
       "ProdutoSpecialDog": true
+    },
+    {
+      "Nome": "AREIA PIPICAT FLORAL 12KG",
+      "Quantidade": 1.0,
+      "ValorUnitario": 58.9,
+      "ValorTotal": 58.9,
+      "DescontoUnitario": 0.0,
+      "DescontoTotal": 0.0,
+      "ValorUnitarioMenosDesconto": 58.9,
+      "ValorTotalMenosDesconto": 58.9,
+      "PontosGerados": 0.0,
+      "Duvida": false,
+      "ProdutoSpecialDog": false
     }
   ],
-  "TextoCompleto": "TEXTO COMPLETO EXTRAÍDO DO OCR..."
+  "TextoCompleto": null
 }
 ```
+
+**IMPORTANTE:** Observe que:
+- ❌ **DOG CHOW** produtos têm `ProdutoSpecialDog: false` (NÃO são elegíveis nesta campanha)
+- ✅ **SPECIAL DOG ULTRALIFE** tem `ProdutoSpecialDog: true` (É elegível)
+- 💰 **Pontos gerados:** Apenas produtos com `ProdutoSpecialDog: true` geram pontos
+- 🔢 **ULTRALIFE:** 4 unidades × multiplicador 2x = 8 pontos
 
 ### 📋 Detalhamento dos Campos JSON
 
@@ -396,18 +441,63 @@ graph TB
 
 ```mermaid
 graph LR
-    A[Nome do Produto] --> B{Contém<br/>SPECIAL DOG<br/>ou DOG CHOW?}
+    A[Nome do Produto] --> B{Contém<br/>SPECIAL DOG?}
     B -->|✅ Sim| C[SpecialDog = true]
-    B -->|❌ Não| D[SpecialDog = false]
+    B -->|❌ Não| D{Contém<br/>DOG CHOW?}
+    D -->|Sim| E[SpecialDog = false<br/>NÃO elegível nesta campanha]
+    D -->|Não| E
     
-    C --> E{Identificar Linha}
-    E -->|ULTRALIFE| F[2x]
-    E -->|BIONATURAL<br/>SENSITIVE| G[4x]
-    E -->|BIONATURAL| H[3x]
-    E -->|Outros| I[1x]
+    C --> F{Identificar Linha}
+    F -->|ULTRALIFE| G[2x]
+    F -->|BIONATURAL<br/>SENSITIVE| H[4x]
+    F -->|BIONATURAL| I[3x]
+    F -->|Outros| J[1x]
     
     style C fill:#d4edda,stroke:#155724,stroke-width:2px
-    style D fill:#f8d7da,stroke:#721c24,stroke-width:2px
+    style E fill:#f8d7da,stroke:#721c24,stroke-width:2px
+```
+
+**IMPORTANTE - Produtos Elegíveis:**
+- ✅ **SPECIAL DOG** (todas as linhas): Premium (1x), UltraLife (2x), BioNatural (3x), BioNatural Sensitive (4x)
+- ❌ **DOG CHOW**: NÃO é elegível nesta campanha
+- ❌ **Outros produtos pet** (areia, brinquedos, etc.): NÃO elegíveis
+
+**Apenas produtos com a marca "SPECIAL DOG" no nome geram pontos!**
+
+---
+
+### ⚠️ Diferença entre DOG CHOW e SPECIAL DOG
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  MARCA           │  ELEGÍVEL?  │  MULTIPLICADOR  │  PONTOS │
+├─────────────────────────────────────────────────────────────┤
+│  SPECIAL DOG     │     ✅      │   1x, 2x, 3x, 4x│   SIM   │
+│  DOG CHOW        │     ❌      │       0x        │   NÃO   │
+│  Outros          │     ❌      │       0x        │   NÃO   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Por que DOG CHOW não é elegível?**
+
+Embora ambas sejam marcas da mesma empresa, **apenas SPECIAL DOG** participa da campanha "Sorte de Quem Indica". O sistema identifica isso através do campo `ProdutoSpecialDog`:
+
+```json
+// ❌ DOG CHOW - NÃO elegível
+{
+  "Nome": "SACHE DOG CHOW FL. CARNE 100GR",
+  "Quantidade": 4.0,
+  "PontosGerados": 0.0,
+  "ProdutoSpecialDog": false  // ❌ FALSE = não gera pontos
+}
+
+// ✅ SPECIAL DOG - ELEGÍVEL
+{
+  "Nome": "SPECIAL DOG SACHE ULTRALIFE AD CORDEIRO",
+  "Quantidade": 4.0,
+  "PontosGerados": 8.0,
+  "ProdutoSpecialDog": true  // ✅ TRUE = gera pontos
+}
 ```
 
 #### **2. Cálculo de Pontuação por Linha de Produto**
@@ -477,8 +567,8 @@ O campo `Duvida` é marcado como `true` quando:
 
 ```json
 {
-  "Cnpj": "03302910000117",
-  "Chave": "35251103302910000117650010000261591000261605",
+  "Cnpj": "XXXXX",
+  "Chave": "XXXXXX",
   "DataEmissao": "2025-11-08T11:40:18",
   "ValorTotalCupom": 141.70
 }
@@ -486,25 +576,28 @@ O campo `Duvida` é marcado como `true` quando:
 
 ### Breakdown de Pontos (Exemplo Real)
 
-| Produto | Qtd | Valor | Linha | Mult. | Pontos |
-|---------|-----|-------|-------|-------|--------|
-| SACHE DOG CHOW FL. CARNE | 4 | 14.00 | Premium | 1x | 4 |
-| SACHE DOG CHOW AD. CARNE | 8 | 28.00 | Premium | 1x | 8 |
-| SACHE DOG CHOW FL. CARNE | 8 | 28.00 | Premium | 1x | 8 |
-| SPECIAL DOG ULTRALIFE CORDEIRO | 4 | 12.80 | UltraLife | 2x | 8 |
-| AREIA PIPICAT FLORAL | 1 | 58.90 | N/A | 0x | 0 |
-| **TOTAL** | **25** | **141.70** | - | - | **28** |
+| Produto | Qtd | Valor | Linha | Elegível | Mult. | Pontos |
+|---------|-----|-------|-------|----------|-------|--------|
+| SACHE DOG CHOW FL. CARNE | 4 | 14.00 | DOG CHOW | ❌ Não | 0x | 0 |
+| SACHE DOG CHOW AD. CARNE | 8 | 28.00 | DOG CHOW | ❌ Não | 0x | 0 |
+| SACHE DOG CHOW FL. CARNE | 8 | 28.00 | DOG CHOW | ❌ Não | 0x | 0 |
+| SPECIAL DOG ULTRALIFE CORDEIRO | 4 | 12.80 | UltraLife | ✅ Sim | 2x | 8 |
+| AREIA PIPICAT FLORAL | 1 | 58.90 | N/A | ❌ Não | 0x | 0 |
+| **TOTAL** | **25** | **141.70** | - | - | - | **8** |
 
 **Resumo da Pontuação:**
-- ✅ 4 produtos SpecialDog elegíveis
-- ❌ 1 produto não elegível (areia para gatos)
-- 💰 **28 pontos** gerados no total
-- 📊 58.5% do valor do cupom em produtos SpecialDog (R$ 82,80)
+- ✅ **1 produto elegível:** SPECIAL DOG ULTRALIFE (único da marca SPECIAL DOG)
+- ❌ **3 produtos DOG CHOW:** NÃO são elegíveis nesta campanha
+- ❌ **1 produto não elegível:** Areia para gatos
+- 💰 **8 pontos** gerados no total (4 unidades × 2x = 8 pontos)
+- 📊 9% do valor do cupom em produtos elegíveis (R$ 12,80 de R$ 141,70)
 
-**Detalhamento por Linha:**
-- 🔵 **Premium (1x):** 20 unidades = 20 pontos
-- 🟢 **UltraLife (2x):** 4 unidades × 2 = 8 pontos
-- ⚪ **Não elegível:** 0 pontos
+**Detalhamento por Status:**
+- 🔴 **DOG CHOW:** 20 unidades = 0 pontos (não elegível)
+- 🟢 **SPECIAL DOG ULTRALIFE (2x):** 4 unidades × 2 = 8 pontos
+- ⚪ **Outros produtos:** 0 pontos
+
+**IMPORTANTE:** Neste cupom, apenas produtos da marca **SPECIAL DOG** são elegíveis. Produtos **DOG CHOW** não participam desta campanha específica.
 
 ---
 
@@ -859,7 +952,7 @@ Para um cupom ser considerado **SUCESSO**, ele precisa passar por TODAS as etapa
 │    ├─ OpenAI: ✅ JSON criado                                │
 │    ├─ CNPJ: ✅ 12345678000190                               │
 │    ├─ Chave: ✅ 12345678901234567890123456789012345678901234│
-│    ├─ Produtos: ❌ Nenhum produto elegível encontrado      │
+│    ├─ Produtos: ❌ Apenas DOG CHOW (não elegível)          │
 │    └─ 🔄 RETRYING...                                        │
 │                                                              │
 │ 🔴 TENTATIVA 3: Google Document AI                          │
@@ -867,8 +960,9 @@ Para um cupom ser considerado **SUCESSO**, ele precisa passar por TODAS as etapa
 │    ├─ OpenAI: ✅ JSON criado                                │
 │    ├─ CNPJ: ✅ 12345678000190                               │
 │    ├─ Chave: ✅ 12345678901234567890123456789012345678901234│
-│    ├─ Produtos: ✅ 3 produtos SpecialDog encontrados       │
-│    ├─ Pontos: ✅ 42 pontos calculados                       │
+│    ├─ Produtos: ✅ 2 SPECIAL DOG + 1 DOG CHOW              │
+│    │            (identificou SPECIAL DOG que estava ilegível)│
+│    ├─ Pontos: ✅ 6 pontos calculados (só SPECIAL DOG)      │
 │    └─ ✅ CUPOM APROVADO!                                    │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
@@ -979,6 +1073,7 @@ pie title "Uso de OCR por Camada"
     "AWS OCR (12%)" : 12
     "Google Document AI (3%)" : 3
 ```
+
 
 ---
 
