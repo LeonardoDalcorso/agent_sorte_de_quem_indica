@@ -16,10 +16,10 @@
 
 | Linha do Produto | Multiplicador | Exemplo (10 unidades) |
 |------------------|---------------|----------------------|
-| 🔵 **PREMIUM** (Padrão) | **1x** | 10 × 1 = **10 pontos** |
-| 🟢 **ULTRALIFE** | **2x** | 10 × 2 = **20 pontos** |
-| 🟡 **BIONATURAL** | **3x** | 10 × 3 = **30 pontos** |
-| 🔴 **BIONATURAL SENSITIVE** | **4x** | 10 × 4 = **40 pontos** |
+| 🔴 **PREMIUM** (Padrão) | **1x** | 10 × 1 = **10 pontos** |
+| 🟡 **ULTRALIFE** | **2x** | 10 × 2 = **20 pontos** |
+| 🟢 **BIONATURAL** | **3x** | 10 × 3 = **30 pontos** |
+| 🔵 **BIONATURAL SENSITIVE** | **4x** | 10 × 4 = **40 pontos** |
 
 **Fórmula:** `PONTOS = QUANTIDADE × MULTIPLICADOR`
 
