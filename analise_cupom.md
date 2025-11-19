@@ -222,8 +222,8 @@ graph TB
 | Tentativa | OCR | Custo | Quando Usa | Taxa Sucesso Final |
 |-----------|-----|-------|------------|-------------------|
 | **1ª** | Google Cloud Vision | 💰 Baixo | Sempre | ~85% |
-| **2ª** | AWS OCR | 💰💰 Médio | Se 1ª falhar em qualquer etapa | ~12% |
-| **3ª** | Google Document AI | 💰💰💰 Alto | Se 2ª falhar em qualquer etapa | ~3% |
+| **2ª** | AWS OCR | 💰💰 Médio | Se 1ª falhar em qualquer etapa | ~80% |
+| **3ª** | Google Document AI | 💰💰💰 Alto | Se 2ª falhar em qualquer etapa | ~90% |
 
 **Taxa de Sucesso Acumulada:** ~98% (após 3 tentativas)
 
