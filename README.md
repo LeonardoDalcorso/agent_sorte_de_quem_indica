@@ -1090,18 +1090,15 @@ timeline
                        
     section Versão 2.0
         OCR em Cascata : 3 camadas OCR
-                      : Fallback automático
+                      : Fallback automático e economia tokens
                       : Melhoria confiabilidade
                       
     section Versão 2.5
-        Otimização IA : Cálculo híbrido
-                     : Validação dupla
-                     : 60% economia tokens
-                     
-    section Versão 3.0
-        Escalabilidade : 10 agentes paralelos
-                      : Hangfire orquestrador
-                      : Alto throughput
+        OCR em Cascata : 3 camadas OCR
+                      : Fallback automático e economia tokens
+                      : Melhoria confiabilidade
+                      : Valida chave na Receita
+
 ```
 
 ### Versão 1.0 (Inicial)
@@ -1129,12 +1126,11 @@ graph LR
     B --> C[Taxa de Sucesso OCR]
     B --> D[Tempo de Processamento]
     B --> E[Consumo de APIs]
-    B --> F[Filas de Processamento]
     
-    C --> G[Alertas Automáticos]
+    
+    C --> G[Alertas]
     D --> G
-    E --> G
-    F --> G
+    E --> G  
     
     G --> H[Equipe de Operações]
     
@@ -1145,18 +1141,14 @@ graph LR
 
 **Pontos Monitorados:**
 - 📊 Taxa de sucesso por camada de OCR
-- ⏱️ Tempo de processamento por agente
 - 💰 Consumo de tokens OpenAI
 - ⚠️ Erros e exceções
 - 📈 Filas de processamento
 - 🔍 Cupons em análise manual
 
 **Alertas Configurados:**
-- 🚨 Taxa de erro > 5%
-- 🚨 Tempo de processamento > 60s
-- 🚨 Fila com mais de 100 cupons
+- 🚨 Taxa de erro
 - 🚨 Consumo de API acima do esperado
-
 ---
 
 ## 🎓 Conclusão
