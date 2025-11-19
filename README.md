@@ -293,7 +293,7 @@ graph TB
   "ValorTotalCupom": 141.7,
   "Produtos": [
     {
-      "Nome": "SACHE DOG CHOW FL. CARNE 100GR",
+      "Nome": "SACHE DOG EXEMPLO FL. CARNE 100GR",
       "Quantidade": 4.0,
       "ValorUnitario": 3.5,
       "ValorTotal": 14.0,
@@ -306,7 +306,7 @@ graph TB
       "ProdutoSpecialDog": false
     },
     {
-      "Nome": "SACHE DOG CHOW AD. CARNE 100GR",
+      "Nome": "SACHE DOG EXEMPLO AD. CARNE 100GR",
       "Quantidade": 8.0,
       "ValorUnitario": 3.5,
       "ValorTotal": 28.0,
@@ -319,7 +319,7 @@ graph TB
       "ProdutoSpecialDog": false
     },
     {
-      "Nome": "SACHE DOG CHOW FL. CARNE 100GR",
+      "Nome": "SACHE DOG EXEMPLO FL. CARNE 100GR",
       "Quantidade": 8.0,
       "ValorUnitario": 3.5,
       "ValorTotal": 28.0,
@@ -466,26 +466,26 @@ graph LR
 
 ---
 
-### ⚠️ Diferença entre DOG CHOW e SPECIAL DOG
+### ⚠️ Diferença entre DOG EXEMPLO e SPECIAL DOG
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  MARCA           │  ELEGÍVEL?  │  MULTIPLICADOR  │  PONTOS │
 ├─────────────────────────────────────────────────────────────┤
 │  SPECIAL DOG     │     ✅      │   1x, 2x, 3x, 4x│   SIM   │
-│  DOG CHOW        │     ❌      │       0x        │   NÃO   │
+│  DOG EXEMPLO        │     ❌      │       0x        │   NÃO   │
 │  Outros          │     ❌      │       0x        │   NÃO   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Por que DOG CHOW não é elegível?**
+**Por que DOG EXEMPLO não é elegível?**
 
 Embora ambas sejam marcas da mesma empresa, **apenas SPECIAL DOG** participa da campanha "Sorte de Quem Indica". O sistema identifica isso através do campo `ProdutoSpecialDog`:
 
 ```json
-// ❌ DOG CHOW - NÃO elegível
+// ❌ DOG EXEMPLO - NÃO elegível
 {
-  "Nome": "SACHE DOG CHOW FL. CARNE 100GR",
+  "Nome": "SACHE DOG EXEMPLO FL. CARNE 100GR",
   "Quantidade": 4.0,
   "PontosGerados": 0.0,
   "ProdutoSpecialDog": false  // ❌ FALSE = não gera pontos
@@ -578,9 +578,9 @@ O campo `Duvida` é marcado como `true` quando:
 
 | Produto | Qtd | Valor | Linha | Elegível | Mult. | Pontos |
 |---------|-----|-------|-------|----------|-------|--------|
-| SACHE DOG CHOW FL. CARNE | 4 | 14.00 | DOG CHOW | ❌ Não | 0x | 0 |
-| SACHE DOG CHOW AD. CARNE | 8 | 28.00 | DOG CHOW | ❌ Não | 0x | 0 |
-| SACHE DOG CHOW FL. CARNE | 8 | 28.00 | DOG CHOW | ❌ Não | 0x | 0 |
+| SACHE DOG EXEMPLO FL. CARNE | 4 | 14.00 | DOG EXEMPLO | ❌ Não | 0x | 0 |
+| SACHE DOG EXEMPLO AD. CARNE | 8 | 28.00 | DOG EXEMPLO | ❌ Não | 0x | 0 |
+| SACHE DOG EXEMPLO FL. CARNE | 8 | 28.00 | DOG EXEMPLO | ❌ Não | 0x | 0 |
 | SPECIAL DOG ULTRALIFE CORDEIRO | 4 | 12.80 | UltraLife | ✅ Sim | 2x | 8 |
 | AREIA PIPICAT FLORAL | 1 | 58.90 | N/A | ❌ Não | 0x | 0 |
 | **TOTAL** | **25** | **141.70** | - | - | - | **8** |
@@ -952,7 +952,7 @@ Para um cupom ser considerado **SUCESSO**, ele precisa passar por TODAS as etapa
 │    ├─ OpenAI: ✅ JSON criado                                │
 │    ├─ CNPJ: ✅ 12345678000190                               │
 │    ├─ Chave: ✅ 12345678901234567890123456789012345678901234│
-│    ├─ Produtos: ❌ Apenas DOG CHOW (não elegível)          │
+│    ├─ Produtos: ❌ Apenas DOG EXEMPLO (não elegível)          │
 │    └─ 🔄 RETRYING...                                        │
 │                                                              │
 │ 🔴 TENTATIVA 3: Google Document AI                          │
@@ -960,7 +960,7 @@ Para um cupom ser considerado **SUCESSO**, ele precisa passar por TODAS as etapa
 │    ├─ OpenAI: ✅ JSON criado                                │
 │    ├─ CNPJ: ✅ 12345678000190                               │
 │    ├─ Chave: ✅ 12345678901234567890123456789012345678901234│
-│    ├─ Produtos: ✅ 2 SPECIAL DOG + 1 DOG CHOW              │
+│    ├─ Produtos: ✅ 2 SPECIAL DOG + 1 DOG EXEMPLO              │
 │    │            (identificou SPECIAL DOG que estava ilegível)│
 │    ├─ Pontos: ✅ 6 pontos calculados (só SPECIAL DOG)      │
 │    └─ ✅ CUPOM APROVADO!                                    │
