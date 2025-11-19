@@ -363,7 +363,7 @@ graph TB
 ```
 
 **IMPORTANTE:** Observe que:
-- ❌ **DOG CHOW** produtos têm `ProdutoSpecialDog: false` (NÃO são elegíveis nesta campanha)
+- ❌ **DOG EXEMPLO** produtos têm `ProdutoSpecialDog: false` (NÃO são elegíveis nesta campanha)
 - ✅ **SPECIAL DOG ULTRALIFE** tem `ProdutoSpecialDog: true` (É elegível)
 - 💰 **Pontos gerados:** Apenas produtos com `ProdutoSpecialDog: true` geram pontos
 - 🔢 **ULTRALIFE:** 4 unidades × multiplicador 2x = 8 pontos
@@ -443,7 +443,7 @@ graph TB
 graph LR
     A[Nome do Produto] --> B{Contém<br/>SPECIAL DOG?}
     B -->|✅ Sim| C[SpecialDog = true]
-    B -->|❌ Não| D{Contém<br/>DOG CHOW?}
+    B -->|❌ Não| D{Contém<br/>DOG EXEMPLO?}
     D -->|Sim| E[SpecialDog = false<br/>NÃO elegível nesta campanha]
     D -->|Não| E
     
@@ -459,7 +459,7 @@ graph LR
 
 **IMPORTANTE - Produtos Elegíveis:**
 - ✅ **SPECIAL DOG** (todas as linhas): Premium (1x), UltraLife (2x), BioNatural (3x), BioNatural Sensitive (4x)
-- ❌ **DOG CHOW**: NÃO é elegível nesta campanha
+- ❌ **DOG EXEMPLO**: NÃO é elegível nesta campanha
 - ❌ **Outros produtos pet** (areia, brinquedos, etc.): NÃO elegíveis
 
 **Apenas produtos com a marca "SPECIAL DOG" no nome geram pontos!**
@@ -587,17 +587,17 @@ O campo `Duvida` é marcado como `true` quando:
 
 **Resumo da Pontuação:**
 - ✅ **1 produto elegível:** SPECIAL DOG ULTRALIFE (único da marca SPECIAL DOG)
-- ❌ **3 produtos DOG CHOW:** NÃO são elegíveis nesta campanha
+- ❌ **3 produtos DOG EXEMPLO:** NÃO são elegíveis nesta campanha
 - ❌ **1 produto não elegível:** Areia para gatos
 - 💰 **8 pontos** gerados no total (4 unidades × 2x = 8 pontos)
 - 📊 9% do valor do cupom em produtos elegíveis (R$ 12,80 de R$ 141,70)
 
 **Detalhamento por Status:**
-- 🔴 **DOG CHOW:** 20 unidades = 0 pontos (não elegível)
+- 🔴 **DOG EXEMPLO:** 20 unidades = 0 pontos (não elegível)
 - 🟢 **SPECIAL DOG ULTRALIFE (2x):** 4 unidades × 2 = 8 pontos
 - ⚪ **Outros produtos:** 0 pontos
 
-**IMPORTANTE:** Neste cupom, apenas produtos da marca **SPECIAL DOG** são elegíveis. Produtos **DOG CHOW** não participam desta campanha específica.
+**IMPORTANTE:** Neste cupom, apenas produtos da marca **SPECIAL DOG** são elegíveis. Produtos **DOG EXEMPLO** não participam desta campanha específica.
 
 ---
 
